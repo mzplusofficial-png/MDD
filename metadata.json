@@ -1,0 +1,6 @@
+{
+  "name": "Les Millionnaires du Digital (M.D.D.)",
+  "description": "Plateforme web professionnelle pour entrepreneurs d'Afrique francophone : vente de produits digitaux, formations, affiliation et paiements adaptés.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
