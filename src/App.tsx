@@ -9,6 +9,10 @@ import { TargetAudienceSection } from './components/TargetAudienceSection';
 import { FAQSection } from './components/FAQSection';
 import { Footer } from './components/Footer';
 import { AuthModal } from './components/AuthModal';
+import { AffiliateInvitationModal } from './components/AffiliateInvitationModal';
+import { AffiliateInvitationPage } from './components/AffiliateInvitationPage';
+import { MegaPackPage } from './components/MegaPackPage';
+import { CourseAcademyPage } from './components/CourseAcademyPage';
 import { MemberDashboard } from './components/MemberDashboard';
 import { AdminDashboard } from './components/AdminDashboard';
 import { Shield, Sparkles } from 'lucide-react';
@@ -16,10 +20,11 @@ import { Shield, Sparkles } from 'lucide-react';
 export default function App() {
   const store = useMDDStore();
   
-  const [activeView, setActiveView] = useState<'home' | 'member' | 'admin'>('home');
+  const [activeView, setActiveView] = useState<'home' | 'member' | 'admin' | 'affiliate-invitation' | 'mega-pack' | 'course'>('home');
   const [selectedMemberTab, setSelectedMemberTab] = useState<'overview' | 'catalog' | 'packs' | 'course' | 'templates' | 'resources' | 'sales' | 'community' | 'support' | 'profile'>('overview');
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [authMode, setAuthMode] = useState<'login' | 'register'>('login');
+  const [isAffiliateModalOpen, setIsAffiliateModalOpen] = useState(false);
 
   const handleOpenAuth = (mode: 'login' | 'register' = 'login') => {
     setAuthMode(mode);
@@ -27,9 +32,31 @@ export default function App() {
   };
 
   const handleNavigateToOption = (tab: 'catalog' | 'packs' | 'course' | 'community') => {
+    // When clicking the Affiliate Program Option, open the designated dedicated invitation interface
+    if (tab === 'catalog') {
+      setActiveView('affiliate-invitation');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    // When clicking the Mega Pack Option, open the designated dedicated Google Drive interface
+    if (tab === 'packs') {
+      setActiveView('mega-pack');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    // When clicking the Course Option, open the designated dedicated Academy interface
+    if (tab === 'course') {
+      setActiveView('course');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
     if (!store.currentUser) {
       store.switchUser('usr_member_01');
     }
+
     setSelectedMemberTab(tab);
     setActiveView('member');
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -242,6 +269,98 @@ export default function App() {
           </div>
         )}
 
+        {/* AFFILIATE INVITATION DEDICATED NEW INTERFACE */}
+        {activeView === 'affiliate-invitation' && (
+          <AffiliateInvitationPage
+            currentUser={store.currentUser}
+            settings={store.settings}
+            onBack={() => {
+              setActiveView('home');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            onAccessApproved={() => {
+              if (!store.currentUser) {
+                store.switchUser('usr_member_01');
+              }
+              setSelectedMemberTab('catalog');
+              setActiveView('member');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            onGoToPacks={() => {
+              setActiveView('mega-pack');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            onGoToCourse={() => {
+              setActiveView('course');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            onGoToCommunity={() => {
+              if (!store.currentUser) {
+                store.switchUser('usr_member_01');
+              }
+              setSelectedMemberTab('community');
+              setActiveView('member');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+          />
+        )}
+
+        {/* OPTION 2: DEDICATED MEGA PACK DIGITAL PRODUCTS PAGE */}
+        {activeView === 'mega-pack' && (
+          <MegaPackPage
+            onBack={() => {
+              setActiveView('home');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            onGoToAffiliation={() => {
+              setActiveView('affiliate-invitation');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            onGoToCourse={() => {
+              setActiveView('course');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            onGoToCommunity={() => {
+              if (!store.currentUser) {
+                store.switchUser('usr_member_01');
+              }
+              setSelectedMemberTab('community');
+              setActiveView('member');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+          />
+        )}
+
+        {/* OPTION 3: DEDICATED ACADEMY & FORMATIONS PAGE */}
+        {activeView === 'course' && (
+          <CourseAcademyPage
+            course={store.course}
+            completedLessons={store.completedLessons}
+            onToggleLesson={store.toggleLessonComplete}
+            currentUser={store.currentUser}
+            onBack={() => {
+              setActiveView('home');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            onGoToAffiliation={() => {
+              setActiveView('affiliate-invitation');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            onGoToMegaPack={() => {
+              setActiveView('mega-pack');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            onGoToCommunity={() => {
+              if (!store.currentUser) {
+                store.switchUser('usr_member_01');
+              }
+              setSelectedMemberTab('community');
+              setActiveView('member');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+          />
+        )}
+
       </main>
 
       {/* Interactive Modals */}
@@ -253,6 +372,17 @@ export default function App() {
         onRegister={store.register}
         onSwitchUser={store.switchUser}
         allUsers={store.users}
+      />
+
+      <AffiliateInvitationModal
+        isOpen={isAffiliateModalOpen}
+        onClose={() => setIsAffiliateModalOpen(false)}
+        currentUser={store.currentUser}
+        onAccessGranted={() => {
+          setSelectedMemberTab('catalog');
+          setActiveView('member');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
       />
 
     </div>

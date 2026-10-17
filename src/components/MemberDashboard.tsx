@@ -9,8 +9,10 @@ import {
   Share2, Users, HelpCircle, User as UserIcon, CheckCircle2, 
   Circle, Play, Download, Copy, ExternalLink, Calendar, 
   Clock, Check, AlertCircle, MessageSquare, Send, ChevronRight,
-  TrendingUp, Wallet, ArrowUpRight, Search, Filter, X, PackageOpen
+  TrendingUp, Wallet, ArrowUpRight, Search, Filter, X, PackageOpen, MessageCircle,
+  FolderOpen, Headphones
 } from 'lucide-react';
+import { MEGA_PACK_PRODUCTS } from '../data/megaPackProducts';
 
 interface MemberDashboardProps {
   currentUser: User;
@@ -448,6 +450,37 @@ export const MemberDashboard: React.FC<MemberDashboardProps> = ({
             {/* 2. CATALOG TAB */}
             {activeTab === 'catalog' && (
               <div className="space-y-6">
+                
+                {/* INVITATION-ONLY GATEWAY BANNER */}
+                <div className="bg-gradient-to-r from-amber-500/15 via-neutral-900 to-neutral-950 border border-amber-500/40 rounded-2xl p-5 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-5 shadow-xl">
+                  <div className="space-y-2 max-w-2xl">
+                    <div className="flex items-center gap-2">
+                      <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-500/20 text-[#FFD700] border border-amber-500/30 uppercase tracking-wider">
+                        ACCÈS SUR INVITATION UNIQUEMENT
+                      </span>
+                      <span className="text-xs text-neutral-400 font-mono">Option 1 &bull; Programme d'Affiliation</span>
+                    </div>
+                    <h3 className="text-base sm:text-lg font-black text-white leading-snug">
+                      Demandez votre accès au programme d'affiliation
+                    </h3>
+                    <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed">
+                      L'accès à ce programme et aux liens d'affiliation est strictement sur invitation. Contactez le <strong className="text-white font-mono text-sm underline decoration-[#4FC3F7]">+237 691 90 66 70</strong> en lui fournissant votre adresse e-mail et votre nom pour recevoir votre validation.
+                    </p>
+                  </div>
+
+                  <div className="shrink-0">
+                    <a
+                      href={`https://wa.me/237691906670?text=${encodeURIComponent(`Bonjour, je demande mon accès au Programme d'Affiliation M.D.D.\nNom : ${currentUser.name}\nEmail : ${currentUser.email}`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-6 py-3.5 bg-[#25D366] hover:bg-[#20ba59] text-black font-extrabold text-xs sm:text-sm rounded-xl transition-all shadow-lg shadow-[#25D366]/20 flex items-center justify-center gap-2 whitespace-nowrap active:scale-[0.99]"
+                    >
+                      <MessageCircle className="w-4 h-4 text-black" />
+                      <span>CONTACTER LE +237 691 90 66 70</span>
+                    </a>
+                  </div>
+                </div>
+
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div>
                     <h2 className="text-xl font-black text-white">Catalogue de Produits Digitaux</h2>
@@ -659,133 +692,108 @@ export const MemberDashboard: React.FC<MemberDashboardProps> = ({
                   </button>
                 </div>
 
-                {/* 4 Massive Sub-Packs Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  
-                  {/* Pack 1: E-books Bundle */}
-                  <div className="bg-neutral-900/60 border border-neutral-800 rounded-xl p-6 flex flex-col justify-between space-y-4 hover:border-neutral-700 transition-colors">
+                {/* Section of the 10 Real Products with Google Drive Links */}
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
                     <div>
-                      <div className="flex items-center justify-between mb-3">
-                        <span className="text-[10px] font-mono text-[#FFD700] uppercase px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 font-bold">
-                          LICENCE MRR (REVENTE)
-                        </span>
-                        <span className="text-xs font-mono text-neutral-500">145 Mo &bull; Format ZIP</span>
-                      </div>
-                      <h3 className="text-base font-bold text-white mb-2">
-                        Pack 100+ E-books Business &amp; Closing WhatsApp
+                      <h3 className="text-lg font-bold text-white flex items-center gap-2">
+                        <FolderOpen className="w-5 h-5 text-[#FFD700]" />
+                        <span>Les 10 Produits Prêts à Vendre (Liens Google Drive)</span>
                       </h3>
-                      <p className="text-xs text-neutral-400 leading-relaxed mb-4">
-                        Une bibliothèque complète de manuels au format PDF haute définition, accompagnés de leurs mockups 3D, pages de vente prêtes et fiches récapitulatives.
+                      <p className="text-xs text-neutral-400">
+                        Ouvrez directement les dossiers ou fichiers Google Drive ci-dessous pour télécharger vos contenus.
                       </p>
-                      <div className="p-3 bg-neutral-950 rounded-lg border border-neutral-800 text-[11px] text-neutral-300 space-y-1">
-                        <div>✓ Closing WhatsApp &amp; Traitement des objections Mobile Money</div>
-                        <div>✓ E-commerce sans stock &amp; Importation rentable</div>
-                        <div>✓ Création d'actifs numériques &amp; Freelancing en Afrique</div>
-                      </div>
                     </div>
-
-                    <button
-                      onClick={() => alert('Téléchargement du Pack 100+ E-books initié (145 Mo).')}
-                      className="w-full py-2.5 bg-[#4FC3F7] text-black font-extrabold text-xs rounded-lg hover:bg-[#38bdf8] flex items-center justify-center gap-2 transition-colors"
-                    >
-                      <Download className="w-4 h-4" />
-                      <span>Télécharger le Pack E-books (ZIP)</span>
-                    </button>
                   </div>
 
-                  {/* Pack 2: Canva Pro Templates */}
-                  <div className="bg-neutral-900/60 border border-neutral-800 rounded-xl p-6 flex flex-col justify-between space-y-4 hover:border-neutral-700 transition-colors">
-                    <div>
-                      <div className="flex items-center justify-between mb-3">
-                        <span className="text-[10px] font-mono text-[#4FC3F7] uppercase px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/30 font-bold">
-                          LICENCE PLR (MODIFIABLE)
-                        </span>
-                        <span className="text-xs font-mono text-neutral-500">85 Mo &bull; Liens Canva</span>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {MEGA_PACK_PRODUCTS.map((prod) => (
+                      <div
+                        key={prod.id}
+                        className="bg-neutral-900/60 border border-neutral-800 rounded-xl p-5 flex flex-col justify-between hover:border-neutral-700 transition-colors shadow-lg"
+                      >
+                        <div>
+                          <div className="flex items-center justify-between gap-2 mb-2">
+                            <span className="font-mono text-xs font-bold text-[#FFD700] bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">
+                              #{String(prod.id).padStart(2, '0')}
+                            </span>
+                            <span className="text-[11px] font-mono text-[#4FC3F7]">{prod.category}</span>
+                          </div>
+
+                          <h4 className="text-base font-bold text-white mb-2 leading-snug">
+                            {prod.title}
+                          </h4>
+
+                          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-black/70 border border-neutral-800 mb-2.5 text-xs">
+                            <span className="text-neutral-400 font-medium">Prix conseillé :</span>
+                            <span className="font-mono font-bold text-[#FFD700]">{prod.priceRange}</span>
+                          </div>
+
+                          <p className="text-xs text-neutral-300 leading-relaxed mb-4">
+                            {prod.description}
+                          </p>
+                        </div>
+
+                        <div className="pt-3 border-t border-neutral-800/80 flex items-center justify-between gap-2">
+                          <a
+                            href={prod.driveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex-1 py-2.5 px-3 bg-[#25D366] hover:bg-[#20ba59] text-black font-extrabold text-xs rounded-lg transition-colors flex items-center justify-center gap-1.5 text-center"
+                          >
+                            <FolderOpen className="w-4 h-4 shrink-0" />
+                            <span>Ouvrir sur Google Drive</span>
+                            <ExternalLink className="w-3.5 h-3.5 shrink-0" />
+                          </a>
+
+                          <button
+                            onClick={() => {
+                              navigator.clipboard.writeText(prod.driveUrl);
+                              alert(`Lien Google Drive copié :\n${prod.driveUrl}`);
+                            }}
+                            className="p-2.5 bg-neutral-950 border border-neutral-800 hover:border-neutral-700 text-neutral-300 hover:text-white rounded-lg transition-colors"
+                            title="Copier le lien Google Drive"
+                          >
+                            <Copy className="w-4 h-4" />
+                          </button>
+                        </div>
                       </div>
-                      <h3 className="text-base font-bold text-white mb-2">
-                        Pack 500+ Templates Canva Pro Éditables
-                      </h3>
-                      <p className="text-xs text-neutral-400 leading-relaxed mb-4">
-                        Des visuels professionnels créés pour les commerces africains. Modifiez les textes, couleurs et tarifs en quelques clics sur Canva gratuit ou Pro.
-                      </p>
-                      <div className="p-3 bg-neutral-950 rounded-lg border border-neutral-800 text-[11px] text-neutral-300 space-y-1">
-                        <div>✓ 250 Posts &amp; Carrousels Instagram / Facebook</div>
-                        <div>✓ 150 Statuts WhatsApp Haute Conversion</div>
-                        <div>✓ 100 Bannières promotionnelles &amp; Logos modifiables</div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Additional Mega Bundles (Canva & Scripts) */}
+                <div className="pt-4 border-t border-neutral-800/80">
+                  <h3 className="text-base font-bold text-white mb-3">
+                    Ressources &amp; Modèles Inclus dans le Pack
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="bg-neutral-900/40 border border-neutral-800 rounded-xl p-4 flex items-center justify-between gap-3">
+                      <div>
+                        <div className="text-xs font-bold text-white">Pack 500+ Templates Canva Pro</div>
+                        <div className="text-[11px] text-neutral-400">Posts, bannières et statuts WhatsApp éditables</div>
                       </div>
+                      <button
+                        onClick={() => alert('Dossier Canva Pro : Tous les liens d’accès sont inclus dans vos documents.')}
+                        className="px-3 py-1.5 bg-neutral-800 hover:bg-neutral-700 text-xs font-semibold rounded-lg text-[#FFD700]"
+                      >
+                        Accéder
+                      </button>
                     </div>
 
-                    <button
-                      onClick={() => alert('Ouverture du dossier d’accès aux 500+ templates Canva Pro.')}
-                      className="w-full py-2.5 bg-[#FFD700] text-black font-extrabold text-xs rounded-lg hover:bg-yellow-400 flex items-center justify-center gap-2 transition-colors"
-                    >
-                      <Download className="w-4 h-4" />
-                      <span>Accéder aux 500+ Templates Canva</span>
-                    </button>
-                  </div>
-
-                  {/* Pack 3: TikTok Viral Scripts */}
-                  <div className="bg-neutral-900/60 border border-neutral-800 rounded-xl p-6 flex flex-col justify-between space-y-4 hover:border-neutral-700 transition-colors">
-                    <div>
-                      <div className="flex items-center justify-between mb-3">
-                        <span className="text-[10px] font-mono text-emerald-400 uppercase px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 font-bold">
-                          LICENCE PLR (LABEL PRIVÉ)
-                        </span>
-                        <span className="text-xs font-mono text-neutral-500">18 Mo &bull; PDF &amp; Docs</span>
+                    <div className="bg-neutral-900/40 border border-neutral-800 rounded-xl p-4 flex items-center justify-between gap-3">
+                      <div>
+                        <div className="text-xs font-bold text-white">Pack 100 Scripts Vidéo TikTok &amp; Reels</div>
+                        <div className="text-[11px] text-neutral-400">Structures virales pour vendre sans montrer son visage</div>
                       </div>
-                      <h3 className="text-base font-bold text-white mb-2">
-                        Pack 100 Scripts TikTok &amp; Reels Viraux
-                      </h3>
-                      <p className="text-xs text-neutral-400 leading-relaxed mb-4">
-                        Structures de vidéos prêtes à l'enregistrement pour vendre en ligne sans jamais devoir montrer votre visage.
-                      </p>
-                      <div className="p-3 bg-neutral-950 rounded-lg border border-neutral-800 text-[11px] text-neutral-300 space-y-1">
-                        <div>✓ Accroches hypnotiques des 3 premières secondes</div>
-                        <div>✓ Guides de voix-off IA et musiques en tendance</div>
-                        <div>✓ Appels à l'action spécifiques pour WhatsApp</div>
-                      </div>
+                      <button
+                        onClick={() => alert('Dossier Scripts : Inclus dans la bibliothèque de ressources M.D.D.')}
+                        className="px-3 py-1.5 bg-neutral-800 hover:bg-neutral-700 text-xs font-semibold rounded-lg text-[#4FC3F7]"
+                      >
+                        Accéder
+                      </button>
                     </div>
-
-                    <button
-                      onClick={() => alert('Téléchargement du Pack de 100 Scripts TikTok initié.')}
-                      className="w-full py-2.5 bg-neutral-800 text-white font-extrabold text-xs rounded-lg hover:bg-neutral-700 flex items-center justify-center gap-2 transition-colors"
-                    >
-                      <Download className="w-4 h-4" />
-                      <span>Télécharger les 100 Scripts (PDF/DOC)</span>
-                    </button>
                   </div>
-
-                  {/* Pack 4: Sales Funnels */}
-                  <div className="bg-neutral-900/60 border border-neutral-800 rounded-xl p-6 flex flex-col justify-between space-y-4 hover:border-neutral-700 transition-colors">
-                    <div>
-                      <div className="flex items-center justify-between mb-3">
-                        <span className="text-[10px] font-mono text-purple-400 uppercase px-2 py-0.5 rounded bg-purple-500/10 border border-purple-500/30 font-bold">
-                          LICENCE MRR (REVENTE)
-                        </span>
-                        <span className="text-xs font-mono text-neutral-500">40 Mo &bull; Codes Sources</span>
-                      </div>
-                      <h3 className="text-base font-bold text-white mb-2">
-                        Pack 20 Tunnels &amp; Pages de Vente Mobile
-                      </h3>
-                      <p className="text-xs text-neutral-400 leading-relaxed mb-4">
-                        Des pages web ultra-rapides conçues pour les smartphones, avec bouton direct vers votre numéro WhatsApp Business.
-                      </p>
-                      <div className="p-3 bg-neutral-950 rounded-lg border border-neutral-800 text-[11px] text-neutral-300 space-y-1">
-                        <div>✓ Code source HTML5/Tailwind prêt à héberger</div>
-                        <div>✓ Modèles Notion prêts à dupliquer en 1 clic</div>
-                        <div>✓ Formulaires de commande optimisés 3G/4G</div>
-                      </div>
-                    </div>
-
-                    <button
-                      onClick={() => alert('Téléchargement des 20 modèles de tunnels de vente initié.')}
-                      className="w-full py-2.5 bg-neutral-800 text-white font-extrabold text-xs rounded-lg hover:bg-neutral-700 flex items-center justify-center gap-2 transition-colors"
-                    >
-                      <Download className="w-4 h-4" />
-                      <span>Télécharger les 20 Tunnels (ZIP)</span>
-                    </button>
-                  </div>
-
                 </div>
               </div>
             )}

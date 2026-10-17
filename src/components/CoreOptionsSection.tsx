@@ -10,34 +10,34 @@ export const CoreOptionsSection: React.FC<CoreOptionsSectionProps> = ({ onSelect
     {
       id: 'catalog',
       number: 'Option 1',
-      badge: 'Prêt à Vendre Immédiatement',
-      badgeColor: 'text-[#4FC3F7] bg-[#4FC3F7]/10 border-[#4FC3F7]/30',
-      title: "Programme d'Affiliation & Produits Digitaux Prêts à Vendre",
-      desc: "Accédez à un catalogue complet de produits numériques testés. Vous recevez un lien d'affilié unique pour chaque produit et touchez des commissions directes sans créer de contenu vous-même.",
+      badge: 'Sur Invitation Uniquement',
+      badgeColor: 'text-[#FFD700] bg-amber-500/10 border-amber-500/30',
+      title: "Programme d'Affiliation & Produits Prêts à Vendre",
+      desc: "L'accès au programme d'affiliation est strictement sur invitation. Pour obtenir votre lien d'affilié et promouvoir les produits, demandez votre accès en contactant le +237 691 90 66 70 en fournissant votre nom et votre adresse e-mail.",
       features: [
-        "Catalogue de produits immédiatement opérationnels",
-        "Lien d'affiliation personnel généré en 1 clic",
-        "Commissions nettes de 40% à 60% par vente",
-        "Guides de promotion et scripts de vente fournis"
+        "Accès exclusif accordé sur invitation officielle",
+        "Contact direct WhatsApp : +237 691 90 66 70",
+        "Lien d'affiliation personnel et produits prêts",
+        "Commissions nettes de 40% à 60% par vente"
       ],
-      cta: "Accéder aux Produits & à l'Affiliation",
+      cta: "Demander Mon Accès (+237 691 90 66 70)",
       icon: ShoppingBag,
-      accentBorder: 'hover:border-[#4FC3F7]'
+      accentBorder: 'hover:border-[#FFD700]'
     },
     {
       id: 'packs',
       number: 'Option 2',
-      badge: 'Droits de Revente MRR & PLR',
+      badge: '10 Dossiers Google Drive & MRR',
       badgeColor: 'text-[#FFD700] bg-[#FFD700]/10 border-[#FFD700]/30',
-      title: "Le Méga Pack de Plusieurs Produits Digitaux",
-      desc: "Téléchargez directement notre pack massif contenant des dizaines d'e-books, guides complets et plus de 500 templates Canva Pro modifiables avec droits légaux de revente.",
+      title: "Le Méga Pack des Produits Digitaux Prêts à Vendre",
+      desc: "Accédez directement aux dossiers Google Drive des 10 produits digitaux prêts à être vendus : formation agriculture & élevage, pack de 500 e-books & 100 audios, remèdes africains, closing WhatsApp et spiritualité.",
       features: [
-        "Plus de 100 e-books et guides pratiques complets",
-        "Pack de 500+ templates Canva Pro éditables",
-        "Licences de revente maître (MRR) & label privé (PLR)",
-        "Téléchargement direct immédiat sans restriction"
+        "10 produits complets avec liens d'accès direct Google Drive",
+        "E-books PDF, formations vidéo, audiobooks MP3 et guides",
+        "Prix de revente conseillés : 1 500F à 5 000F CFA par vente",
+        "Droits de revente (MRR) : vous conservez 100% de vos gains"
       ],
-      cta: "Explorer & Télécharger les Packs",
+      cta: "Accéder au Méga Pack (10 Dossiers Drive)",
       icon: PackageOpen,
       accentBorder: 'hover:border-[#FFD700]'
     },

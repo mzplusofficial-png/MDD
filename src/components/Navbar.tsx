@@ -8,8 +8,8 @@ import {
 interface NavbarProps {
   currentUser: User | null;
   settings: PlatformSettings;
-  activeView: 'home' | 'member' | 'admin';
-  setActiveView: (view: 'home' | 'member' | 'admin') => void;
+  activeView: 'home' | 'member' | 'admin' | 'affiliate-invitation' | 'mega-pack' | 'course';
+  setActiveView: (view: 'home' | 'member' | 'admin' | 'affiliate-invitation' | 'mega-pack' | 'course') => void;
   onOpenAuth: (initialMode?: 'login' | 'register') => void;
   onOpenCheckout: () => void;
   onOpenArchitectureGuide: () => void;
@@ -62,6 +62,27 @@ export const Navbar: React.FC<NavbarProps> = ({
               className={`hover:text-white transition-colors whitespace-nowrap shrink-0 ${activeView === 'home' ? 'text-[#4FC3F7]' : ''}`}
             >
               Accueil
+            </button>
+            <button
+              onClick={() => setActiveView('affiliate-invitation')}
+              className={`hover:text-[#FFD700] transition-colors whitespace-nowrap shrink-0 flex items-center gap-1.5 font-bold ${activeView === 'affiliate-invitation' ? 'text-[#FFD700]' : 'text-neutral-300'}`}
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FFD700]" />
+              <span>Affiliation (Sur Invitation)</span>
+            </button>
+            <button
+              onClick={() => setActiveView('mega-pack')}
+              className={`hover:text-[#4FC3F7] transition-colors whitespace-nowrap shrink-0 flex items-center gap-1.5 font-bold ${activeView === 'mega-pack' ? 'text-[#4FC3F7]' : 'text-neutral-300'}`}
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-[#4FC3F7]" />
+              <span>Méga Pack (Drive)</span>
+            </button>
+            <button
+              onClick={() => setActiveView('course')}
+              className={`hover:text-amber-300 transition-colors whitespace-nowrap shrink-0 flex items-center gap-1.5 font-bold ${activeView === 'course' ? 'text-[#FFD700]' : 'text-neutral-300'}`}
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FFD700]" />
+              <span>Formations (5 Modules)</span>
             </button>
             <a 
               href="#options" 
@@ -287,12 +308,33 @@ export const Navbar: React.FC<NavbarProps> = ({
             </a>
             <button
               onClick={() => {
-                onOpenArchitectureGuide();
+                setActiveView('affiliate-invitation');
                 setMobileMenuOpen(false);
               }}
-              className="text-left py-2 text-[#FFD700]"
+              className="text-left py-2 text-[#FFD700] font-bold flex items-center gap-2"
             >
-              Documentation Paiements & API
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FFD700]" />
+              <span>Affiliation (Sur Invitation)</span>
+            </button>
+            <button
+              onClick={() => {
+                setActiveView('mega-pack');
+                setMobileMenuOpen(false);
+              }}
+              className="text-left py-2 text-[#4FC3F7] font-bold flex items-center gap-2"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-[#4FC3F7]" />
+              <span>Méga Pack (10 Produits Drive)</span>
+            </button>
+            <button
+              onClick={() => {
+                setActiveView('course');
+                setMobileMenuOpen(false);
+              }}
+              className="text-left py-2 text-[#FFD700] font-bold flex items-center gap-2"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-[#FFD700]" />
+              <span>Formations (5 Modules Vidéo)</span>
             </button>
           </div>
 

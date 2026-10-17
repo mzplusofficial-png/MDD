@@ -63,12 +63,13 @@ export const Footer: React.FC<FooterProps> = ({
                 </a>
               </li>
               <li>
-                <button 
-                  onClick={onOpenArchitectureGuide} 
-                  className="hover:text-[#FFD700] transition-colors text-left"
+                <a 
+                  href="#options" 
+                  className="hover:text-[#FFD700] transition-colors text-left flex items-center gap-1.5"
                 >
-                  Documentation Paiements &amp; API
-                </button>
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#FFD700]" />
+                  <span>Affiliation (Sur Invitation &bull; +237 691906670)</span>
+                </a>
               </li>
             </ul>
           </div>

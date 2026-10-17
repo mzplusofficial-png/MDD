@@ -19,11 +19,11 @@ export const FAQSection: React.FC = () => {
     },
     {
       q: "Comment accéder à la formation après mon inscription ?",
-      a: "Dès que votre commande est validée, votre espace membre est automatiquement déverrouillé. Vous pouvez vous connecter à n'importe quel moment 24h/24 et 7j/7 depuis votre téléphone ou votre ordinateur pour visionner les vidéos et télécharger les documents."
+      a: "Dès la création de votre compte, votre espace membre est automatiquement déverrouillé, sans aucune modalité ni frais de paiement. Vous pouvez vous connecter à n'importe quel moment 24h/24 et 7j/7 depuis votre téléphone ou votre ordinateur pour visionner les vidéos et télécharger les documents."
     },
     {
-      q: "Comment fonctionne l'accès aux 4 pôles et comment reçoit-on ses gains ?",
-      a: "L'accès à l'ensemble des 4 pôles M.D.D. (Affiliation & Produits prêts à vendre, Méga Pack MRR/PLR, Formations vidéos, Communauté du samedi) est direct et immédiat dès la création de votre compte. Lorsque vous réalisez des ventes grâce à vos liens ou à vos packs, vous recevez vos commissions directement par Mobile Money (Orange Money, MTN MoMo, Wave, Moov) ou virement bancaire selon votre pays."
+      q: "Comment fonctionne l'accès aux 4 pôles et au programme d'affiliation ?",
+      a: "Les 4 pôles sont conçus pour votre autonomie. Les formations vidéo, le méga pack de produits digitaux MRR et les lives du samedi sont en accès direct. Concernant le programme d'affiliation et ses produits prêts à vendre, l'accès se fait sur invitation : il vous suffit de contacter le +237 691906670 sur WhatsApp en fournissant votre adresse e-mail et votre nom pour recevoir votre code ou validation officielle."
     },
     {
       q: "Comment fonctionne la vente des produits et les licences ?",
